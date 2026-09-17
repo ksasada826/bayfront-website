@@ -662,7 +662,16 @@ footer span { text-align: right; }
   .proof { margin-top: 36px; }
   .proof article { padding: 32px 0; }
   .contact-form { margin-top: 36px; gap: 18px 16px; }
-  footer { padding: 28px 20px; }
+
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 28px 20px;
+  }
+
+  footer span { text-align: left; }
 
   .how {
     border-top: 0;
