@@ -1,0 +1,7 @@
+# Cloudflare Pages — static site (no build step)
+# Deploy (after `npx wrangler login`):
+#   npx wrangler pages deploy . --project-name=bayfront-website
+# Or connect the GitHub repo in the Cloudflare dashboard (preferred for ongoing updates).
+name = "bayfront-website"
+compatibility_date = "2026-09-17"
+pages_build_output_dir = "."

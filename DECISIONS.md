@@ -20,9 +20,9 @@
 - **実績:** 匿名の実案件5件（ロイヤリティ／スタジアム売店／海外アドテク日本窓口＝Opera系／国内不動産の経営改革＝楽市楽座系／海外気象テックBD＝Aeolus系）。社名・国籍の出しすぎに注意。楽市楽座は社内文書を載せず Bayfront 側の役割記述のみ（2026-09-17）
 - **箱の使い分け（2026-09-17 採用）:** 同じ箱の繰り返しをやめた。ご支援の流れ＝1本の線でつないだ3ステップ（番号は Newsreader）／実績＝案件名｜内容の一覧表＋帯の地色（paper）。箱（背景＋左線）は使わない
 
-- **公開ホスト（2026-09-17）:** GitHub Pages（repo `ksasada826/bayfront-website`）。カスタムドメイン `bayfront-partners.com`（apex 正、www は apex 向け）。DNS は Squarespace Domains（旧 Google Domains NS）。フォームは Web3Forms（キーは `js/form-config.js`、メール直書きなし）
+- **公開ホスト（2026-09-17 → Cloudflare 寄せ）:** Cloudflare Pages（ソース repo `ksasada826/bayfront-website`）。カスタムドメイン `bayfront-partners.com`（apex 正、www も Pages に紐付け）。DNS 権威は Cloudflare。レジストラは Squarespace Domains のまま（NS のみ切替）。旧 GitHub Pages カスタムドメイン案は不採用（【決定 2026-09-17 Keisuke】）。フォームは Web3Forms（キーは `js/form-config.js`、メール直書きなし）。Google Workspace の MX／SPF／DKIM は DNS only で維持
 
-Updated: 2026-09-17（Keisuke 現行モック承認／公開準備）
+Updated: 2026-09-17（Keisuke 現行モック承認／Cloudflare 寄せ）
 
 ## 和文調査メモ（2026-09-17）
 
