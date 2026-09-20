@@ -1,0 +1,12 @@
+# Cloudflare Pages — keep HTML fresh; assets versioned via ?v= in HTML
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/ja/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/js/*
+  Cache-Control: public, max-age=0, must-revalidate
