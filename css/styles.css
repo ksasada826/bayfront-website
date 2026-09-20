@@ -477,6 +477,60 @@ html[lang="ja"] .principal-links .text-link {
   border-top: 0;
 }
 
+.co-facts {
+  margin: 28px 0 0;
+  padding: 0;
+  max-width: 720px;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(21, 32, 40, 0.14);
+}
+
+.co-facts > div {
+  display: grid;
+  grid-template-columns: minmax(7rem, 9.5rem) minmax(0, 1fr);
+  gap: 12px 24px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(21, 32, 40, 0.14);
+}
+
+.co-facts dt {
+  margin: 0;
+  font-family: "Stack Sans Notch", var(--jp), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+html[lang="ja"] .co-facts dt {
+  font-family: var(--jp);
+  letter-spacing: 0.04em;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.co-facts dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+html[lang="ja"] .co-facts dd {
+  font-family: var(--jp);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+  .co-facts > div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 12px 0;
+  }
+}
+
 .contact .kicker { color: rgba(255, 255, 255, 0.55); }
 .contact .lead { color: #fff; }
 .contact .copy { color: rgba(255, 255, 255, 0.75); }
