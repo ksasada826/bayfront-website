@@ -489,14 +489,14 @@ html[lang="ja"] .co-facts dd {
   display: block;
   font-size: 16px;
   line-height: 1.45;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--ink);
 }
 
 html[lang="ja"] .co-founder-name {
   font-family: var(--jp);
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .co-founder .name-jp {
