@@ -13,18 +13,16 @@
 - **Headline font:** Newsreader（「Beside you, beyond complexity.」）
 - **Kicker / UI sans:** Stack Sans Notch（ロゴ同一）
 - **Contact:** 問い合わせフォーム（メールアドレス直書きはしない）
-- **和文コピーの型:** B 丁寧な会社案内に決定（2026-09-17 Keisuke）。A・C は不採用。`mockup-full.html` からトーン切替を削除。旧A/B/Cは `mockup-full_tone-abc.html` に退避
-- **和文フォント（2026-09-17 Keisuke「ヒラギノで」ロック）:** `"Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "游ゴシック", Meiryo, sans-serif`（旧 chooser の jp-hira と同一）。比較用 chooser は削除。Windows ではヒラギノ未搭載のため游ゴシック等にフォールバック
-- **About:** 経歴リスト（`.principal ul`）は廃止（2026-09-17 Keisuke）。社名は紹介文（`about.copy`）に散文で織り込む（Palantir / Woven by Toyota / Meta / Fast Retailing / NTT DOCOMO）。Ridge-i は載せない
-- **About 肩書き:** 名前下に Founder & CEO（EN表記のまま）。kicker は 代表 / Principal 等を維持可
-- **会社概要（サイト / 2026-09-20）:** `#company`。社名・事業一文・Founded／Founder／住所。HQ行は住所と重複するため削除。**資本金・人数は出さない**。住所にマンション名なし・ENは Japan 付き。設立は 2025年11月（詳細日は vault）。nav「サービス／Approach」は `#what`。
-- **About 写真（2026-09-20）:** ポートレート試したが大きすぎるため不採用。`photo-yokohama-dusk.jpg` に戻す（差し替えは再検討）。
+- **和文コピーの型:** B 丁寧な会社案内に決定（2026-09-17 Keisuke）。A・C は不採用
+- **和文フォント（2026-09-17 Keisuke「ヒラギノで」ロック）:** `"Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "游ゴシック", Meiryo, sans-serif`
+- **会社概要（【決定 2026-09-20】代表を内包）:** `#company` に社名／事業一文／Founded・Founder・住所＋代表プロフィール（経歴・LinkedIn・写真）をまとめる。独立した Principal／代表紹介セクションと nav 項目は廃止（旧 `#about` は founder ブロックに残し互換）。**資本金・人数は出さない**。住所にマンション名なし・ENは Japan 付き。設立は 2025年11月。nav「サービス／Approach」は `#what`
+- **代表プロフィール:** 経歴リストは廃止（2026-09-17）。社名は紹介文に散文で織り込む。Ridge-i は載せない。肩書きは Founder & CEO（EN表記のまま）。写真は `photo-yokohama-dusk.jpg`（ポートレート不採用）
 - **実績:** 匿名の実案件5件（ロイヤリティ／スタジアム売店／海外アドテク日本窓口＝Opera系／国内不動産の経営改革＝楽市楽座系／海外気象テックBD＝Aeolus系）。社名・国籍の出しすぎに注意。楽市楽座は社内文書を載せず Bayfront 側の役割記述のみ（2026-09-17）
 - **箱の使い分け（2026-09-17 採用）:** 同じ箱の繰り返しをやめた。ご支援の流れ＝1本の線でつないだ3ステップ（番号は Newsreader）／実績＝案件名｜内容の一覧表＋帯の地色（paper）。箱（背景＋左線）は使わない
 
 - **公開ホスト（2026-09-17 → Cloudflare 寄せ）:** Cloudflare Pages（ソース repo `ksasada826/bayfront-website`）。カスタムドメイン `bayfront-partners.com`（apex 正、www も Pages に紐付け）。DNS 権威は Cloudflare。レジストラは Squarespace Domains のまま（NS のみ切替）。旧 GitHub Pages カスタムドメイン案は不採用（【決定 2026-09-17 Keisuke】）。フォームは Web3Forms（キーは `js/form-config.js`、メール直書きなし）。Google Workspace の MX／SPF／DKIM は DNS only で維持
 
-Updated: 2026-09-20（`/` EN・`/ja/` JP のURL分離）
+Updated: 2026-09-20（会社概要に代表を統合）
 
 ## 和文調査メモ（2026-09-17）
 
