@@ -479,32 +479,33 @@ html[lang="ja"] .principal-links .text-link {
 
 .company .co-name {
   margin: 0 0 10px;
-  font-family: "Newsreader", "Hiragino Mincho ProN", serif;
-  font-size: clamp(26px, 3.2vw, 34px);
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  font-size: clamp(22px, 2.6vw, 30px);
+  line-height: 1.45;
+  max-width: 640px;
+  font-weight: 500;
   color: var(--ink);
 }
 
 html[lang="ja"] .company .co-name {
   font-family: var(--jp);
   font-weight: 700;
-  letter-spacing: 0.02em;
-  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
 }
 
 .company .co-biz {
   margin: 0 0 28px;
-  max-width: 36em;
+  max-width: 560px;
   font-size: 16px;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--muted);
 }
 
 html[lang="ja"] .company .co-biz {
   font-family: var(--jp);
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 1.95;
+  max-width: 36em;
 }
 
 .co-facts {
@@ -533,7 +534,7 @@ html[lang="ja"] .company .co-biz {
   font-family: "Stack Sans Notch", var(--jp), sans-serif;
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -541,26 +542,31 @@ html[lang="ja"] .company .co-biz {
 html[lang="ja"] .co-facts dt {
   font-family: var(--jp);
   text-transform: none;
-  letter-spacing: 0.04em;
-  font-size: 13px;
+  letter-spacing: 0.08em;
+  font-size: 12px;
   font-weight: 700;
 }
 
 .co-facts dd {
   margin: 0;
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.7;
   color: var(--ink);
 }
 
 html[lang="ja"] .co-facts dd {
   font-family: var(--jp);
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.95;
 }
 
 .co-facts .co-address dd {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--muted);
+}
+
+html[lang="ja"] .co-facts .co-address dd {
+  font-size: 14px;
 }
 
 @media (max-width: 800px) {
