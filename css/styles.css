@@ -4,6 +4,8 @@
   --paper: #f3f1ec;
   --line: #d5d1c8;
   --sea: #101c28;
+  /* 全セクション共通の左右ガター（desktop）。mobile は @media で上書き */
+  --page-pad: 36px;
   /* 和文ロック: Hiragino（2026-09-17 Keisuke）。Windows は游ゴシック等にフォールバック */
   --jp: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "游ゴシック", Meiryo, sans-serif;
 }
@@ -15,6 +17,7 @@ body {
   font-family: "DM Sans", system-ui, sans-serif;
   color: var(--ink);
   background: #fff;
+  overflow-x: clip;
 }
 
 html[lang="ja"] body {
@@ -58,7 +61,7 @@ html[lang="ja"] .privacy {
   display: flex;
   align-items: center;
   gap: 28px;
-  padding: 22px 36px;
+  padding: 22px max(var(--page-pad), env(safe-area-inset-right, 0px)) 22px max(var(--page-pad), env(safe-area-inset-left, 0px));
   font-size: 13px;
   color: rgba(255, 255, 255, 0.92);
   position: relative;
@@ -133,7 +136,7 @@ html[lang="ja"] .links a {
   justify-content: center;
   width: 40px;
   height: 40px;
-  margin: -8px -6px -8px 0;
+  margin: -8px 0;
   padding: 0;
   border: 0;
   background: none;
@@ -171,8 +174,9 @@ html[lang="ja"] .links a {
 }
 
 .hero-body {
-  padding: 14vh 36px 64px;
-  max-width: 720px;
+  padding: 14vh max(var(--page-pad), env(safe-area-inset-right, 0px)) 64px max(var(--page-pad), env(safe-area-inset-left, 0px));
+  max-width: calc(720px + 2 * var(--page-pad));
+  box-sizing: border-box;
 }
 
 .hero-body h1 {
@@ -195,10 +199,13 @@ html[lang="ja"] .links a {
 html[lang="ja"] .hero-body p {
   font-size: 15px;
   line-height: 1.9;
-  max-width: 22.5em;
-  word-break: keep-all;
+  max-width: min(22.5em, 100%);
+  /* keep-all + overflow-wrap:normal だと「方針づくりから…」が1語扱いとなり
+     狭いviewportで横スクロールする（320–375pxで再現）。auto-phrase 優先、
+     未対応ブラウザは anywhere で緊急折り返し */
+  word-break: auto-phrase;
   line-break: strict;
-  overflow-wrap: normal;
+  overflow-wrap: anywhere;
 }
 
 .cta {
@@ -223,7 +230,7 @@ html[lang="ja"] .cta {
 }
 
 section {
-  padding: 80px 36px;
+  padding: 80px max(var(--page-pad), env(safe-area-inset-right, 0px)) 80px max(var(--page-pad), env(safe-area-inset-left, 0px));
   border-top: 1px solid var(--line);
   scroll-margin-top: 16px;
 }
@@ -566,7 +573,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 22px 36px;
+  padding: 22px max(var(--page-pad), env(safe-area-inset-right, 0px)) 22px max(var(--page-pad), env(safe-area-inset-left, 0px));
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   background: #0a1218;
   color: rgba(255, 255, 255, 0.55);
@@ -586,6 +593,10 @@ footer img {
 footer span { text-align: right; }
 
 @media (max-width: 800px) {
+  :root {
+    --page-pad: 24px;
+  }
+
   .how,
   .principal,
   .contact-form {
@@ -597,7 +608,8 @@ footer span { text-align: right; }
   .nav {
     flex-wrap: wrap;
     gap: 0 16px;
-    padding: 18px 20px;
+    padding-top: 18px;
+    padding-bottom: 18px;
     align-items: center;
   }
 
@@ -644,7 +656,8 @@ footer span { text-align: right; }
   html[lang="ja"] .links a { font-size: 15px; }
 
   .hero-body {
-    padding: 48px 20px 72px;
+    padding-top: 48px;
+    padding-bottom: 72px;
   }
 
   .hero-body h1 {
@@ -655,7 +668,10 @@ footer span { text-align: right; }
 
   .hero-body p { margin-bottom: 32px; }
 
-  section { padding: 64px 20px; }
+  section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
 
   .lead { margin-bottom: 22px; }
   .kicker { margin-bottom: 22px; }
@@ -668,7 +684,8 @@ footer span { text-align: right; }
     align-items: flex-start;
     justify-content: flex-start;
     gap: 12px;
-    padding: 28px 20px;
+    padding-top: 28px;
+    padding-bottom: 28px;
   }
 
   footer span { text-align: left; }
