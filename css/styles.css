@@ -615,7 +615,8 @@ footer span { text-align: right; }
 
   .brand {
     margin-right: auto;
-    max-width: calc(100% - 108px);
+    /* lang(~38) + gap(16) + toggle(40) + nav column-gap(16) ≒ 110+ 余裕 */
+    max-width: calc(100% - 120px);
   }
 
   .brand img {
