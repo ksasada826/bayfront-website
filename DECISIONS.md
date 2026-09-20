@@ -17,7 +17,7 @@
 - **和文フォント（2026-09-17 Keisuke「ヒラギノで」ロック）:** `"Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "游ゴシック", Meiryo, sans-serif`（旧 chooser の jp-hira と同一）。比較用 chooser は削除。Windows ではヒラギノ未搭載のため游ゴシック等にフォールバック
 - **About:** 経歴リスト（`.principal ul`）は廃止（2026-09-17 Keisuke）。社名は紹介文（`about.copy`）に散文で織り込む（Palantir / Woven by Toyota / Meta / Fast Retailing / NTT DOCOMO）。Ridge-i は載せない
 - **About 肩書き:** 名前下に Founder & CEO（EN表記のまま）。kicker は 代表 / Principal 等を維持可
-- **About 写真（2026-09-20 Keisuke）:** `assets/photos/photo-keisuke.jpg`。大きすぎないヘッドショット（表示幅約160px）として掲載。港の夕景仮置きは終了。
+- **About 写真（2026-09-20）:** ポートレート試したが大きすぎるため不採用。`photo-yokohama-dusk.jpg` に戻す（差し替えは再検討）。
 - **実績:** 匿名の実案件5件（ロイヤリティ／スタジアム売店／海外アドテク日本窓口＝Opera系／国内不動産の経営改革＝楽市楽座系／海外気象テックBD＝Aeolus系）。社名・国籍の出しすぎに注意。楽市楽座は社内文書を載せず Bayfront 側の役割記述のみ（2026-09-17）
 - **箱の使い分け（2026-09-17 採用）:** 同じ箱の繰り返しをやめた。ご支援の流れ＝1本の線でつないだ3ステップ（番号は Newsreader）／実績＝案件名｜内容の一覧表＋帯の地色（paper）。箱（背景＋左線）は使わない
 
