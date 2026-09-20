@@ -32,20 +32,16 @@ const en = {
   "about.copy": "Yokohama-based. Eighteen years across digital companies — NTT DOCOMO, Fast Retailing, Meta, Woven by Toyota, and Palantir — bridging product, field, and commercial stakeholders through complex work in Japan, Asia, the US, and Europe.",
   "about.linkedin": "LinkedIn",
   "co.kicker": "Company",
-  "co.name.l": "Legal name",
-  "co.name.v": "Bayfront Partners Co., Ltd. (株式会社Bayfront Partners)",
-  "co.founded.l": "Incorporated",
-  "co.founded.v": "November 23, 2025",
-  "co.rep.l": "Representative",
-  "co.rep.v": "Keisuke Sasada, Representative Director & CEO",
-  "co.biz.l": "Business",
+  "co.name.v": "Bayfront Partners Co., Ltd.",
   "co.biz.v": "Cross-border business development consulting",
-  "co.capital.l": "Capital",
-  "co.capital.v": "¥1,000,000",
-  "co.hq.l": "Head office",
-  "co.hq.v": "8-3 Hoshino-cho, Kanagawa-ku, Yokohama, Kanagawa 221-0035, Japan",
-  "co.headcount.l": "Team",
-  "co.headcount.v": "1 (Founder)",
+  "co.founded.l": "Founded",
+  "co.founded.v": "2025",
+  "co.rep.l": "Founder",
+  "co.rep.v": "Keisuke Sasada, CEO",
+  "co.hq.l": "HQ",
+  "co.hq.v": "Yokohama, Japan",
+  "co.addr.l": "Address",
+  "co.addr.v": "8-3 Hoshino-cho, Kanagawa-ku, Yokohama, Kanagawa 221-0035",
   "contact.kicker": "Contact",
   "contact.lead": "Start with a short note on what you’re building and why Japan now.",
   "contact.copy": "Bayfront Partners Co., Ltd. · Yokohama, Japan",
@@ -102,20 +98,16 @@ const ja = {
   "about.copy": "横浜を拠点に活動しています。NTTドコモ、ファーストリテイリング、Meta、Woven by Toyota、Palantir などデジタル領域の事業会社で約\u206018年、プロダクト・現場・営業をつなぐ立場で、日本・アジアに加え、米国や欧州の案件にも携わってきました。",
   "about.linkedin": "LinkedIn",
   "co.kicker": "会社概要",
-  "co.name.l": "会社名",
-  "co.name.v": "株式会社Bayfront Partners（Bayfront Partners Co., Ltd.）",
-  "co.founded.l": "設立",
-  "co.founded.v": "2025年11月23日",
-  "co.rep.l": "代表者",
-  "co.rep.v": "代表取締役CEO 笹田圭祐",
-  "co.biz.l": "事業内容",
+  "co.name.v": "株式会社Bayfront Partners",
   "co.biz.v": "クロスボーダー事業開発コンサルティング",
-  "co.capital.l": "資本金",
-  "co.capital.v": "1,000,000円",
-  "co.hq.l": "本社",
-  "co.hq.v": "〒221-0035 神奈川県横浜市神奈川区星野町8番3号",
-  "co.headcount.l": "従業員",
-  "co.headcount.v": "1名（代表本人）",
+  "co.founded.l": "設立",
+  "co.founded.v": "2025年",
+  "co.rep.l": "代表",
+  "co.rep.v": "笹田圭祐（CEO）",
+  "co.hq.l": "所在地",
+  "co.hq.v": "神奈川県横浜市",
+  "co.addr.l": "住所",
+  "co.addr.v": "〒221-0035 神奈川県横浜市神奈川区星野町8番3号",
   "contact.kicker": "お問い合わせ",
   "contact.lead": "事業内容と、日本を検討している理由をお知らせください。",
   "contact.copy": "株式会社Bayfront Partners · 横浜",
@@ -137,7 +129,15 @@ const ja = {
   "footer.copy": "© 株式会社Bayfront Partners"
 };
 
-let lang = "en";
+const LANG_KEY = "bf-lang";
+function readSavedLang() {
+  try {
+    const saved = localStorage.getItem(LANG_KEY);
+    if (saved === "en" || saved === "ja") return saved;
+  } catch (_e) { /* ignore */ }
+  return "en";
+}
+let lang = readSavedLang();
 const langToggle = document.getElementById("lang-toggle");
 const siteNav = document.getElementById("site-nav");
 const navToggle = document.getElementById("nav-toggle");
@@ -210,6 +210,7 @@ function formAccessKey() {
 
 langToggle.addEventListener("click", () => {
   lang = lang === "ja" ? "en" : "ja";
+  try { localStorage.setItem(LANG_KEY, lang); } catch (_e) { /* ignore */ }
   applyCopy();
 });
 
