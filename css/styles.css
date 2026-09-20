@@ -248,6 +248,10 @@ section {
   font-family: "Stack Sans Notch", sans-serif;
 }
 
+h2.kicker {
+  line-height: normal;
+}
+
 html[lang="ja"] .kicker {
   font-family: var(--jp);
   text-transform: none;
@@ -764,6 +768,21 @@ footer img {
 }
 
 footer span { text-align: right; }
+
+footer a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  opacity: 0.9;
+}
+
+footer a:hover { opacity: 1; }
+
+.contact-form .privacy a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 
 @media (max-width: 800px) {
   :root {
