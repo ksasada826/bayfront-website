@@ -433,6 +433,30 @@ html[lang="ja"] .proof span {
   color: var(--muted);
 }
 
+.principal-links {
+  margin: 20px 0 0;
+}
+
+.principal-links .text-link {
+  font-family: "Stack Sans Notch", var(--jp), sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  opacity: 0.85;
+}
+
+.principal-links .text-link:hover {
+  opacity: 1;
+}
+
+html[lang="ja"] .principal-links .text-link {
+  font-family: var(--jp);
+}
+
 .principal-photo {
   margin: 0;
   aspect-ratio: 4 / 5;
