@@ -2,7 +2,7 @@
 
 - **Direction:** A Harbour Photographic
 - **Hero photo:** 2 昼の海（みなとみらい実写）`photo-yokohama-day.jpg`
-- **Languages:** EN / JP toggle。**【決定 2026-09-20 Keisuke「主を英語ね」】既定（主）は英語。** `lang = "en"`、`<html lang="en">`、`og:locale` = `en_US`（alternate `ja_JP`）。HTML 本文の `data-i18n` 既定テキストも英語（初回ペイントで日本語フラッシュしない）。読み手は分ける: **EN＝海外の見込み客（B2B）**／**JP＝銀行など実態・実在を確認したい側**（営業用の日本語訳ページではない）。JPは会社概要・所在・代表・連絡手段など検証しやすい情報を厚くする方向。実績の数字追加・対象／契約形態の詳細文言は今回やらない（Keisuke）
+- **Languages（【決定 2026-09-20】URL分離）:** `/`＝英語、`/ja/`＝日本語。各URLが最初から本文を返す（JSの `data-i18n` 書き換えは廃止）。hreflang・canonical・sitemap は両URLを相互参照。x-default は `/`。読み手: **EN＝海外の見込み客（B2B）**／**JP＝銀行など実態・実在を確認したい側**（営業用の日本語訳ページではない）。JPは会社概要・所在・代表・連絡手段など検証しやすい情報を厚くする方向。実績の数字追加・対象／契約形態の詳細文言は未着手（Keisuke）
 - **About LinkedIn ラベル:** 両言語とも "LinkedIn"（「プロフィール」は使わない）
 - **Client proof:** anonymous only
 - **Logo (dark hero):** `logos/logo-name-white.png` from Drive `01 logo/02 png`
@@ -24,7 +24,7 @@
 
 - **公開ホスト（2026-09-17 → Cloudflare 寄せ）:** Cloudflare Pages（ソース repo `ksasada826/bayfront-website`）。カスタムドメイン `bayfront-partners.com`（apex 正、www も Pages に紐付け）。DNS 権威は Cloudflare。レジストラは Squarespace Domains のまま（NS のみ切替）。旧 GitHub Pages カスタムドメイン案は不採用（【決定 2026-09-17 Keisuke】）。フォームは Web3Forms（キーは `js/form-config.js`、メール直書きなし）。Google Workspace の MX／SPF／DKIM は DNS only で維持
 
-Updated: 2026-09-20（既定EN・JP読者＝実態確認／写真・LinkedIn）
+Updated: 2026-09-20（`/` EN・`/ja/` JP のURL分離）
 
 ## 和文調査メモ（2026-09-17）
 
