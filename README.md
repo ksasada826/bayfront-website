@@ -128,13 +128,11 @@ Settings → Pages にカスタムドメインが残っていれば外す（`git
 
 ## 問い合わせフォーム（Web3Forms）
 
-メールアドレスは HTML に書かない。送信は [Web3Forms](https://web3forms.com/)（無料枠）。
+問い合わせは1画面1問のステップ式です。質問と選択肢は `js/lead-form-config.js` で差し替えます。希望時期の質問は、同じファイルの `timingEnabled` を true にすると入ります。
 
-1. Web3Forms でアカウント作成し、受信先を `ksasada@bayfront-partners.com` に設定
-2. Access Key を発行
-3. `js/form-config.js` の `accessKey: ""` に貼って commit / push
+メールアドレスは HTML に書きません。送信は [Web3Forms](https://web3forms.com/) のままです。Access Key は `js/form-config.js` の `accessKey` です。空のときは送らず、画面に案内を出します。
 
-キー未設定のまま送信すると、画面に設定案内が出る（送信はしない）。
+GA4 で計測するときは、`js/lead-form-config.js` の `analytics.gaMeasurementId` に測定 ID を入れます。空のあいだは計測のスクリプトを読み込みません。
 
 ## TBD
 

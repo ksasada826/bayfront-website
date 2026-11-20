@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Newsreader:opsz,wght@6..72,400&family=Stack+Sans+Notch:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/styles.css?v=seo2" />
+  <link rel="stylesheet" href="/css/styles.css?v=lead2" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -215,40 +215,38 @@
 
     <section class="contact" id="contact">
       <h2 class="kicker">お問い合わせ</h2>
-      <p class="lead">事業内容と、日本を検討している理由をお知らせください。</p>
+      <p class="copy" id="lead-intro">3つの質問にお答えください。メールでご連絡します。</p>
       <p class="copy">株式会社Bayfront Partners · 横浜</p>
-      <form class="contact-form" id="contact-form" method="post" novalidate>
-        <div>
-          <label for="name">お名前</label>
-          <input id="name" name="name" type="text" autocomplete="name" required placeholder="お名前" />
+      <div class="lead-form" id="lead-form">
+        <div class="progress">
+          <span class="count">01 <small>/ 03</small></span>
+          <span class="bar" aria-hidden="true"><i></i></span>
+          <button type="button" class="back" hidden disabled>戻る</button>
         </div>
-        <div>
-          <label for="company">会社名</label>
-          <input id="company" name="company" type="text" autocomplete="organization" placeholder="会社名" />
-        </div>
-        <div class="full">
-          <label for="email">メールアドレス</label>
-          <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" />
-        </div>
-        <div class="full">
-          <label for="message">お問い合わせ内容</label>
-          <textarea id="message" name="message" required placeholder="事業内容と、日本を検討している理由"></textarea>
-        </div>
+        <div id="lead-panel" aria-live="polite"></div>
+        <noscript>
+          <p class="note">このフォームは JavaScript を使います。<a href="https://www.linkedin.com/in/keisuke-sasada/" target="_blank" rel="noopener noreferrer">LinkedIn</a> からもご連絡いただけます。</p>
+        </noscript>
         <!-- honeypot: leave empty -->
         <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <button type="submit">送信する</button>
-        <p class="hint" id="form-hint" role="status" aria-live="polite"></p>
-        <p class="privacy">ご入力いただいた内容は、ご返信のためにのみ使用します。<a href="/ja/privacy/">プライバシーポリシー</a></p>
-      </form>
+      </div>
     </section>
   </main>
 
   <footer>
     <img src="/assets/logos/logo-name-white.png" alt="Bayfront Partners" />
-    <span>© 株式会社Bayfront Partners · <a href="/ja/privacy/">プライバシー</a></span>
+    <div class="foot-right">
+      <a class="pref" href="https://www.google.com/preferences/source?q=bayfront-partners.com" target="_blank" rel="noopener">
+        <svg viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M6 .6l1.6 3.4 3.7.4-2.8 2.5.8 3.7L6 8.7 2.7 10.6l.8-3.7L.7 4.4l3.7-.4z"/></svg>
+        <span>Google の優先ソースに追加</span>
+      </a>
+      <span>© 株式会社Bayfront Partners · <a href="/ja/privacy/">プライバシー</a></span>
+    </div>
   </footer>
 
-  <script src="/js/form-config.js?v=seo2"></script>
-  <script src="/js/main.js?v=seo2"></script>
+  <script src="/js/form-config.js?v=lead1"></script>
+  <script src="/js/lead-form-config.js?v=lead1"></script>
+  <script src="/js/main.js?v=lead1"></script>
+  <script src="/js/lead-form.js?v=lead1"></script>
 </body>
 </html>

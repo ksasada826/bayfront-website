@@ -1,0 +1,459 @@
+<title>Bayfront Lead Form</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Newsreader:opsz,wght@6..72,400&family=Stack+Sans+Notch:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: mock controls on top; the site (nav band, sea-blue Contact band, footer) on the left; what gets measured and mailed on the right.
+   Single theme by choice: it reproduces bayfront-partners.com, which is one fixed look. Tokens copied from css/styles.css. */
+:root {
+  --ink: #152028;
+  --muted: #5a6670;
+  --paper: #f3f1ec;
+  --line: #d5d1c8;
+  --sea: #101c28;
+  --deep: #0a1218;
+  --white: #ffffff;
+  --on-sea: rgba(255, 255, 255, 0.92);
+  --on-sea-muted: rgba(255, 255, 255, 0.66);
+  --on-sea-line: rgba(255, 255, 255, 0.18);
+  --err: #ffb4b4;
+  --sans: "DM Sans", system-ui, sans-serif;
+  --label: "Stack Sans Notch", "DM Sans", system-ui, sans-serif;
+  --num: "Newsreader", Georgia, serif;
+  --jp: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "游ゴシック", Meiryo, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--jp);
+  font-size: 14px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 48px;
+}
+button { font: inherit; }
+:focus-visible { outline: 2px solid #2f6fd6; outline-offset: 2px; }
+
+/* ---------- mock controls ---------- */
+.mock-bar {
+  display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between;
+  gap: 14px 24px; max-width: 1240px; margin: 0 auto 18px;
+}
+.mock-bar h1 { margin: 0; font-size: 18px; font-weight: 700; color: var(--ink); }
+.mock-bar p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+.controls { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+.ctl { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; font-weight: 600; }
+.seg { display: inline-flex; border: 1px solid var(--line); }
+.seg button {
+  border: 0; background: var(--white); color: var(--ink); padding: 7px 12px; min-height: 36px;
+  font-size: 12px; font-weight: 600; cursor: pointer;
+}
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--sea); color: var(--white); }
+.reset {
+  border: 1px solid var(--line); background: var(--white); color: var(--ink);
+  padding: 7px 12px; min-height: 36px; font-size: 12px; font-weight: 600; cursor: pointer;
+}
+
+.layout {
+  display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 24px;
+  max-width: 1240px; margin: 0 auto; align-items: start;
+}
+@media (max-width: 960px) { .layout { grid-template-columns: minmax(0, 1fr); } }
+
+.stage { min-width: 0; }
+.stage.is-phone { display: flex; justify-content: center; background: var(--paper); padding-block: 24px; }
+.stage.is-phone .site { width: 390px; max-width: 100%; box-shadow: 0 0 0 1px var(--line); }
+
+/* ---------- the site ---------- */
+.site { container-type: inline-size; background: var(--white); color: var(--ink); font-family: var(--sans); min-width: 0; }
+.site[lang="ja"] { font-family: var(--jp); font-weight: 500; }
+
+.site-nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  background: var(--sea); padding: 20px 36px; border-bottom: 1px solid var(--on-sea-line);
+}
+.site-nav img { height: 24px; width: auto; display: block; }
+.site-nav span { color: var(--on-sea-muted); font-family: var(--label); font-size: 12px; letter-spacing: 0.08em; }
+
+.contact { background: var(--sea); color: var(--white); padding: 64px 36px 72px; }
+.kicker {
+  margin: 0 0 16px; font-family: var(--label); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255, 255, 255, 0.55);
+}
+.site[lang="ja"] .kicker { font-family: var(--jp); text-transform: none; letter-spacing: 0.08em; font-weight: 700; }
+.intro { margin: 0; max-width: 560px; color: rgba(255, 255, 255, 0.75); font-size: 16px; line-height: 1.7; }
+.site[lang="ja"] .intro { font-size: 15px; line-height: 1.9; }
+
+.lead-form { max-width: 640px; }
+.progress { display: flex; align-items: center; gap: 16px; margin: 30px 0 24px; min-height: 44px; }
+.count { font-family: var(--num); font-size: 26px; line-height: 1; color: var(--white); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.count small { font-size: 15px; color: var(--on-sea-muted); }
+.bar { flex: 1; height: 2px; background: var(--on-sea-line); position: relative; min-width: 40px; }
+.bar i { position: absolute; inset: 0 auto 0 0; background: var(--white); transition: width 0.3s ease; }
+.back {
+  background: none; border: 0; color: var(--on-sea-muted); cursor: pointer; min-height: 44px; padding: 0 0 0 8px;
+  font-family: var(--label); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.back:hover { color: var(--white); }
+.site[lang="ja"] .back { font-family: var(--jp); text-transform: none; letter-spacing: 0.06em; font-size: 13px; font-weight: 700; }
+.back[hidden] { display: block !important; visibility: hidden; }
+
+.q {
+  margin: 0 0 22px; font-size: clamp(22px, 4.2cqi, 28px); line-height: 1.4; font-weight: 500;
+  color: var(--white); text-wrap: balance;
+}
+.q:focus { outline: none; }
+.site[lang="ja"] .q { font-family: var(--jp); font-weight: 700; line-height: 1.6; letter-spacing: 0.01em; }
+
+.options { display: grid; border-bottom: 1px solid var(--on-sea-line); }
+.opt {
+  display: grid; gap: 4px; width: 100%; text-align: left; cursor: pointer;
+  background: transparent; color: var(--white); border: 0; border-top: 1px solid var(--on-sea-line);
+  padding: 18px 14px; min-height: 64px; transition: background 0.15s ease, color 0.15s ease;
+}
+.opt:hover { background: rgba(255, 255, 255, 0.06); }
+.opt:focus-visible { outline: 2px solid var(--white); outline-offset: -2px; }
+.opt-title { font-size: 17px; font-weight: 500; line-height: 1.4; }
+.opt-desc { font-size: 13px; line-height: 1.55; color: var(--on-sea-muted); }
+.site[lang="ja"] .opt-title { font-size: 16px; font-weight: 700; }
+.opt.is-picked { background: var(--white); color: var(--sea); }
+.opt.is-picked .opt-desc { color: var(--muted); }
+
+.recap { margin: 0 0 22px; padding: 0; list-style: none; display: grid; gap: 4px; color: var(--on-sea-muted); font-size: 13px; line-height: 1.6; }
+.field label {
+  display: block; margin-bottom: 8px; color: rgba(255, 255, 255, 0.85);
+  font-family: var(--label); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.site[lang="ja"] .field label { font-family: var(--jp); text-transform: none; letter-spacing: 0.06em; font-weight: 700; font-size: 12px; }
+.field input {
+  width: 100%; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.45); border-radius: 0;
+  color: var(--white); font: 400 16px / 1.5 var(--sans); padding: 14px; min-height: 52px;
+}
+.field input::placeholder { color: rgba(255, 255, 255, 0.55); }
+.field input:focus { outline: none; border-color: rgba(255, 255, 255, 0.9); background: rgba(255, 255, 255, 0.16); }
+.field input[aria-invalid="true"] { border-color: var(--err); }
+.error { min-height: 20px; margin: 8px 0 0; color: var(--err); font-size: 13px; }
+.send {
+  margin-top: 10px; background: var(--white); color: var(--sea); border: 0; cursor: pointer; min-height: 52px; padding: 0 30px;
+  font-family: var(--label); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.site[lang="ja"] .send { font-family: var(--jp); text-transform: none; letter-spacing: 0.06em; font-size: 14px; }
+.note { margin: 16px 0 0; color: rgba(255, 255, 255, 0.6); font-size: 12px; line-height: 1.6; }
+.note a, .done a { color: inherit; text-underline-offset: 2px; }
+.done p { margin: 0; color: rgba(255, 255, 255, 0.75); font-size: 16px; line-height: 1.7; overflow-wrap: anywhere; }
+
+.site-footer {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 20px;
+  background: var(--deep); color: rgba(255, 255, 255, 0.55); padding: 22px 36px; font-size: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.site-footer img { height: 22px; width: auto; display: block; opacity: 0.9; }
+.foot-right { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 12px 18px; }
+.foot-right a.priv { color: inherit; text-underline-offset: 2px; }
+.pref {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.4); color: var(--on-sea); text-decoration: none;
+  font-family: var(--label); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.pref:hover { border-color: var(--white); color: var(--white); }
+.pref svg { width: 12px; height: 12px; flex: none; }
+.site[lang="ja"] .pref { font-family: var(--jp); text-transform: none; letter-spacing: 0.04em; font-size: 12px; font-weight: 700; }
+
+@container (max-width: 600px) {
+  .site-nav { padding: 18px 24px; }
+  .contact { padding: 48px 24px 56px; }
+  .site-footer { padding: 22px 24px; flex-direction: column; align-items: flex-start; }
+  .foot-right { justify-content: flex-start; flex-direction: column; align-items: flex-start; }
+  .send { width: 100%; }
+}
+
+/* ---------- notes ---------- */
+.notes { background: var(--paper); padding: 20px; display: grid; gap: 22px; min-width: 0; }
+.notes h2 { margin: 0 0 8px; font-size: 13px; font-weight: 700; color: var(--ink); }
+.notes p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.7; }
+.log { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; max-height: 260px; overflow: auto; }
+.log li {
+  background: var(--white); border-left: 3px solid var(--sea); padding: 7px 10px;
+  font: 12px / 1.5 ui-monospace, "Cascadia Mono", Consolas, monospace; color: var(--ink); overflow-wrap: anywhere;
+}
+.log li span { color: var(--muted); }
+.log .empty { border-left-color: var(--line); color: var(--muted); font-family: var(--jp); }
+.mail { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 12px; font-size: 12.5px; line-height: 1.5; }
+.mail dt { color: var(--muted); }
+.mail dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
+.about { margin: 0; padding-left: 1.2em; color: var(--muted); font-size: 12.5px; line-height: 1.7; display: grid; gap: 4px; }
+
+@media (prefers-reduced-motion: reduce) { .bar i, .opt { transition: none; } }
+</style>
+
+<header class="mock-bar">
+  <div>
+    <h1>問い合わせフォーム モック</h1>
+    <p>bayfront-partners.com の Contact 欄をステップ式に置き換え、フッターに優先ソースボタンを足した場合の見た目です。実際には送信しません。</p>
+  </div>
+  <div class="controls">
+    <div class="ctl">言語 <span class="seg" id="seg-lang"><button type="button" data-v="en" aria-pressed="true">EN</button><button type="button" data-v="ja" aria-pressed="false">JA</button></span></div>
+    <div class="ctl">希望時期の質問 <span class="seg" id="seg-timing"><button type="button" data-v="off" aria-pressed="true">オフ</button><button type="button" data-v="on" aria-pressed="false">オン</button></span></div>
+    <div class="ctl">表示 <span class="seg" id="seg-view"><button type="button" data-v="desk" aria-pressed="true">PC</button><button type="button" data-v="phone" aria-pressed="false">スマホ</button></span></div>
+    <button type="button" class="reset" id="reset">最初から</button>
+  </div>
+</header>
+
+<div class="layout">
+  <div class="stage" id="stage">
+    <div class="site" id="site" lang="en">
+      <div class="site-nav">
+        <img src="logo-name-white.png" alt="Bayfront Partners">
+        <span id="nav-lang">EN | JP</span>
+      </div>
+      <section class="contact" id="contact" aria-labelledby="kicker">
+        <p class="kicker" id="kicker">Contact</p>
+        <p class="intro" id="intro"></p>
+        <div class="lead-form">
+          <div class="progress" id="progress">
+            <span class="count" id="count"></span>
+            <span class="bar" aria-hidden="true"><i id="bar-fill"></i></span>
+            <button type="button" class="back" id="back"></button>
+          </div>
+          <div id="panel" aria-live="polite"></div>
+        </div>
+      </section>
+      <footer class="site-footer">
+        <img src="logo-name-white.png" alt="Bayfront Partners">
+        <div class="foot-right">
+          <a class="pref" id="pref" href="https://www.google.com/preferences/source?q=bayfront-partners.com" target="_blank" rel="noopener">
+            <svg viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M6 .6l1.6 3.4 3.7.4-2.8 2.5.8 3.7L6 8.7 2.7 10.6l.8-3.7L.7 4.4l3.7-.4z"/></svg>
+            <span id="pref-text"></span>
+          </a>
+          <span>© Bayfront Partners Co., Ltd. · <a class="priv" href="#contact" id="priv-link">Privacy</a></span>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <aside class="notes" aria-label="モックの説明">
+    <div>
+      <h2>計測で送るイベント</h2>
+      <p>各ステップの表示・回答・送信完了を記録します。表示の数の差が、どこで離脱したかになります。</p>
+      <ol class="log" id="log"><li class="empty">操作するとここに出ます</li></ol>
+    </div>
+    <div>
+      <h2>担当に届くメールの中身</h2>
+      <dl class="mail" id="mail"><dt>状態</dt><dd>送信すると表示されます</dd></dl>
+    </div>
+    <div>
+      <h2>このモックについて</h2>
+      <ul class="about">
+        <li>選択肢を押すとすぐ次の質問へ進みます。戻るで前の質問に戻れます。</li>
+        <li>自由入力は最後のメールアドレスだけです。形式が違うと送信前に止めます。</li>
+        <li>質問と選択肢は設定にまとめてあり、差し替えられます。希望時期の質問は設定でオンにできます。</li>
+        <li>フッターのボタンは Google の優先ソースの設定画面に飛びます（公式の直接リンク）。</li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<script>
+/* The real site would load this from a separate config file (js/lead-form-config.js). */
+const CONFIG = {
+  steps: [
+    { id: "service",
+      q: { en: "What do you need help with?", ja: "どのような支援をお探しですか" },
+      options: [
+        { v: "entry_strategy", en: ["Japan market entry strategy", "Why Japan, why now, and where to start."], ja: ["日本進出の戦略づくり", "なぜ日本か、なぜ今か、どこから始めるかを固めます"] },
+        { v: "partner_customer", en: ["Partner & customer development", "Mapping and opening doors with Japanese buyers and partners."], ja: ["提携先・顧客の開拓", "日本の買い手と提携先を洗い出し、商談の入口をつくります"] },
+        { v: "japan_desk", en: ["Local Japan desk", "An ongoing local BD owner working for your HQ."], ja: ["日本の窓口（継続支援）", "本社に代わり、日本側の事業開発を継続して担当します"] },
+        { v: "other", en: ["Something else", ""], ja: ["その他", ""] }
+      ] },
+    { id: "stage",
+      q: { en: "Where are you with Japan today?", ja: "日本での現在の状況を教えてください" },
+      options: [
+        { v: "exploring", en: ["Exploring Japan", ""], ja: ["日本進出を検討し始めた", ""] },
+        { v: "ready_outreach", en: ["Ready to start outreach", ""], ja: ["営業や提携の打診を始めたい", ""] },
+        { v: "in_japan", en: ["Already in Japan, need traction", ""], ja: ["すでに日本で活動中で、成果を伸ばしたい", ""] }
+      ] },
+    { id: "timing", optional: true,
+      q: { en: "When would you like to start?", ja: "いつ頃から始めたいですか" },
+      options: [
+        { v: "within_3m", en: ["Within 3 months", ""], ja: ["3か月以内", ""] },
+        { v: "3_to_6m", en: ["In 3–6 months", ""], ja: ["3〜6か月後", ""] },
+        { v: "just_exploring", en: ["Just exploring for now", ""], ja: ["まだ情報収集の段階", ""] }
+      ] }
+  ]
+};
+
+const COPY = {
+  en: {
+    kicker: "Contact", nav: "EN | JP",
+    intro: n => `${n} quick questions. We'll reply by email.`,
+    back: "Back",
+    contactQ: "Where should we reply?", label: "Work email", placeholder: "you@company.com", send: "Send",
+    error: "Enter an email address like name@company.com.",
+    note: 'We use your email only to reply. See our <a href="#contact">Privacy Policy</a>.',
+    doneQ: "Thanks. We received your request.", doneP: e => `We'll reply to ${e} by email.`,
+    pref: "Add us as a preferred source on Google", priv: "Privacy",
+    page: "https://bayfront-partners.com/#contact", subject: "Bayfront Partners — website lead (EN)"
+  },
+  ja: {
+    kicker: "お問い合わせ", nav: "EN | JP",
+    intro: n => `${n}つの質問にお答えください。メールでご連絡します。`,
+    back: "戻る",
+    contactQ: "返信先のメールアドレスを教えてください", label: "メールアドレス", placeholder: "you@company.com", send: "送信する",
+    error: "name@company.com の形で入力してください。",
+    note: 'いただいたメールアドレスは返信のためだけに使います。<a href="#contact">プライバシーポリシー</a>',
+    doneQ: "受け付けました。", doneP: e => `${e} 宛てに、メールでご連絡します。`,
+    pref: "Google の優先ソースに追加", priv: "プライバシー",
+    page: "https://bayfront-partners.com/ja/#contact", subject: "Bayfront Partners — website lead (JA)"
+  }
+};
+
+const state = { lang: "en", timing: false, i: 0, answers: {}, email: "", done: false };
+const $ = id => document.getElementById(id);
+const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function questionSteps() { return CONFIG.steps.filter(s => !s.optional || state.timing); }
+function totalSteps() { return questionSteps().length + 1; }
+function pad(n) { return String(n).padStart(2, "0"); }
+function optionLabel(stepId, v) {
+  const s = CONFIG.steps.find(x => x.id === stepId);
+  const o = s && s.options.find(x => x.v === v);
+  return o ? o[state.lang][0] : "";
+}
+
+function logEvent(name, params) {
+  const log = $("log");
+  const empty = log.querySelector(".empty");
+  if (empty) empty.remove();
+  const li = document.createElement("li");
+  const p = Object.entries(params).map(([k, v]) => `${k}=${v}`).join(" ");
+  li.innerHTML = `${name} <span>${p}</span>`;
+  log.prepend(li);
+}
+
+function render(fromNav) {
+  const c = COPY[state.lang];
+  const site = $("site");
+  site.lang = state.lang;
+  $("kicker").textContent = c.kicker;
+  $("nav-lang").textContent = c.nav;
+  $("intro").textContent = c.intro(totalSteps());
+  $("pref-text").textContent = c.pref;
+  $("priv-link").textContent = c.priv;
+  $("back").textContent = c.back;
+
+  const total = totalSteps();
+  const steps = questionSteps();
+  const panel = $("panel");
+
+  if (state.done) {
+    $("progress").hidden = true;
+    panel.innerHTML = `<div class="done"><h2 class="q" tabindex="-1">${c.doneQ}</h2><p>${c.doneP(escapeHtml(state.email))}</p></div>`;
+    if (fromNav) panel.querySelector(".q").focus();
+    return;
+  }
+
+  $("progress").hidden = false;
+  $("count").innerHTML = `${pad(state.i + 1)} <small>/ ${pad(total)}</small>`;
+  $("bar-fill").style.width = `${((state.i + 1) / total) * 100}%`;
+  $("back").hidden = state.i === 0;
+
+  if (state.i < steps.length) {
+    const s = steps[state.i];
+    const picked = state.answers[s.id];
+    panel.innerHTML = `<h2 class="q" tabindex="-1">${s.q[state.lang]}</h2>
+      <div class="options">${s.options.map(o => {
+        const [t, d] = o[state.lang];
+        return `<button type="button" class="opt${picked === o.v ? " is-picked" : ""}" data-v="${o.v}"><span class="opt-title">${t}</span>${d ? `<span class="opt-desc">${d}</span>` : ""}</button>`;
+      }).join("")}</div>`;
+    panel.querySelectorAll(".opt").forEach(btn => btn.addEventListener("click", () => pick(s, btn)));
+  } else {
+    const recap = steps.map(s => `<li>${optionLabel(s.id, state.answers[s.id])}</li>`).join("");
+    panel.innerHTML = `<h2 class="q" tabindex="-1">${c.contactQ}</h2>
+      <ul class="recap">${recap}</ul>
+      <form id="email-form" novalidate>
+        <div class="field">
+          <label for="lead-email">${c.label}</label>
+          <input id="lead-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="${c.placeholder}" value="${escapeHtml(state.email)}" aria-describedby="lead-error">
+          <p class="error" id="lead-error" role="alert"></p>
+        </div>
+        <button type="submit" class="send">${c.send}</button>
+        <p class="note">${c.note}</p>
+      </form>`;
+    $("email-form").addEventListener("submit", submit);
+    $("lead-email").addEventListener("input", e => {
+      state.email = e.target.value;
+      if (e.target.getAttribute("aria-invalid") === "true" && validEmail(state.email)) {
+        e.target.removeAttribute("aria-invalid"); $("lead-error").textContent = "";
+      }
+    });
+  }
+  if (fromNav) panel.querySelector(".q").focus();
+}
+
+function viewEvent() {
+  const steps = questionSteps();
+  const id = state.i < steps.length ? steps[state.i].id : "contact";
+  logEvent("lead_step_view", { step: state.i + 1, step_id: id });
+}
+
+function pick(step, btn) {
+  state.answers[step.id] = btn.dataset.v;
+  btn.parentElement.querySelectorAll(".opt").forEach(b => b.classList.toggle("is-picked", b === btn));
+  logEvent("lead_answer", { step_id: step.id, value: btn.dataset.v });
+  setTimeout(() => { state.i += 1; render(true); viewEvent(); }, reduced ? 0 : 180);
+}
+
+function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); }
+function escapeHtml(s) { return String(s).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch])); }
+
+function submit(e) {
+  e.preventDefault();
+  const input = $("lead-email");
+  state.email = input.value.trim();
+  if (!validEmail(state.email)) {
+    input.setAttribute("aria-invalid", "true");
+    $("lead-error").textContent = COPY[state.lang].error;
+    input.focus();
+    return;
+  }
+  const c = COPY[state.lang];
+  const now = new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" });
+  const rows = [["件名", c.subject]];
+  questionSteps().forEach(s => rows.push([s.id, optionLabel(s.id, state.answers[s.id])]));
+  rows.push(["email", state.email], ["submitted_at", `${now}（日本時間）`], ["page_url", c.page]);
+  $("mail").innerHTML = rows.map(([k, v]) => `<dt>${k}</dt><dd>${escapeHtml(v)}</dd>`).join("");
+  const params = { step: totalSteps() };
+  questionSteps().forEach(s => params[s.id] = state.answers[s.id]);
+  logEvent("lead_submit", params);
+  state.done = true;
+  render(true);
+}
+
+function setSeg(id, v) { $(id).querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === v ? "true" : "false")); }
+
+$("back").addEventListener("click", () => { if (state.i > 0) { state.i -= 1; render(true); viewEvent(); } });
+$("seg-lang").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; state.lang = b.dataset.v; setSeg("seg-lang", state.lang); render(false); });
+$("seg-timing").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  state.timing = b.dataset.v === "on"; setSeg("seg-timing", b.dataset.v); restart();
+});
+$("seg-view").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  setSeg("seg-view", b.dataset.v); $("stage").classList.toggle("is-phone", b.dataset.v === "phone");
+});
+$("reset").addEventListener("click", restart);
+
+function restart() {
+  state.i = 0; state.answers = {}; state.email = ""; state.done = false;
+  $("log").innerHTML = '<li class="empty">操作するとここに出ます</li>';
+  $("mail").innerHTML = "<dt>状態</dt><dd>送信すると表示されます</dd>";
+  render(false); viewEvent();
+}
+
+render(false);
+viewEvent();
+</script>

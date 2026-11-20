@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Newsreader:opsz,wght@6..72,400&family=Stack+Sans+Notch:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/styles.css?v=seo2" />
+  <link rel="stylesheet" href="/css/styles.css?v=lead2" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -215,40 +215,38 @@
 
     <section class="contact" id="contact">
       <h2 class="kicker">Contact</h2>
-      <p class="lead">Start with a short note on what you’re building and why Japan now.</p>
+      <p class="copy" id="lead-intro">3 quick questions. We'll reply by email.</p>
       <p class="copy">Bayfront Partners Co., Ltd. · Yokohama, Japan</p>
-      <form class="contact-form" id="contact-form" method="post" novalidate>
-        <div>
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name" />
+      <div class="lead-form" id="lead-form">
+        <div class="progress">
+          <span class="count">01 <small>/ 03</small></span>
+          <span class="bar" aria-hidden="true"><i></i></span>
+          <button type="button" class="back" hidden disabled>Back</button>
         </div>
-        <div>
-          <label for="company">Company</label>
-          <input id="company" name="company" type="text" autocomplete="organization" placeholder="Company" />
-        </div>
-        <div class="full">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" />
-        </div>
-        <div class="full">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" required placeholder="What you’re building, and why Japan now."></textarea>
-        </div>
+        <div id="lead-panel" aria-live="polite"></div>
+        <noscript>
+          <p class="note">This form needs JavaScript. You can also reach Keisuke on <a href="https://www.linkedin.com/in/keisuke-sasada/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+        </noscript>
         <!-- honeypot: leave empty -->
         <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <button type="submit">Send inquiry</button>
-        <p class="hint" id="form-hint" role="status" aria-live="polite"></p>
-        <p class="privacy">We use your message only to reply. See our <a href="/privacy/">Privacy Policy</a>.</p>
-      </form>
+      </div>
     </section>
   </main>
 
   <footer>
     <img src="/assets/logos/logo-name-white.png" alt="Bayfront Partners" />
-    <span>© Bayfront Partners Co., Ltd. · <a href="/privacy/">Privacy</a></span>
+    <div class="foot-right">
+      <a class="pref" href="https://www.google.com/preferences/source?q=bayfront-partners.com" target="_blank" rel="noopener">
+        <svg viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M6 .6l1.6 3.4 3.7.4-2.8 2.5.8 3.7L6 8.7 2.7 10.6l.8-3.7L.7 4.4l3.7-.4z"/></svg>
+        <span>Add us as a preferred source on Google</span>
+      </a>
+      <span>© Bayfront Partners Co., Ltd. · <a href="/privacy/">Privacy</a></span>
+    </div>
   </footer>
 
-  <script src="/js/form-config.js?v=seo2"></script>
-  <script src="/js/main.js?v=seo2"></script>
+  <script src="/js/form-config.js?v=lead1"></script>
+  <script src="/js/lead-form-config.js?v=lead1"></script>
+  <script src="/js/main.js?v=lead1"></script>
+  <script src="/js/lead-form.js?v=lead1"></script>
 </body>
 </html>
