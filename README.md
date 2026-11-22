@@ -31,6 +31,14 @@ npx wrangler pages project create bayfront-website --production-branch=main
 npx wrangler pages deploy . --project-name=bayfront-website
 ```
 
+確認用（Preview）に置くときは `--branch=<名前>` を付ける。`https://<名前>.bayfront-website.pages.dev` になり、本番は変わらない。
+
+Wrangler のログインが切れているとき（2026-11-22）: `wrangler login` の許可画面は約2分で時間切れになり、Keisuke が PC の前にいないと通らない。待たずに Chrome の管理画面から上げる。Keisuke が Chrome で Cloudflare にサインイン済みなら、エージェントだけで終わる。
+
+1. `.git`・`.wrangler`・`.claude`・`docs` を除いて zip にする（手順の例: `work/2026-11-21-lead-form/make_zip.py`）
+2. Cloudflare → アカウント「Ksasada@bayfront-partners.com's Account」→ Workers & Pages → `bayfront-website` → Create deployment
+3. 環境は **Preview** を選び、Preview name を入れて zip を上げる → Save and deploy。Production を選ぶと本番が置き換わるので、本番に出すときだけ Keisuke の OK を取ってから選ぶ
+
 Git 連携（推奨・ダッシュボード）:
 
 1. [Cloudflare Dashboard](https://dash.cloudflare.com/) → Workers & Pages → Create → Pages → Connect to Git
