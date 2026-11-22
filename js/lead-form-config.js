@@ -4,7 +4,7 @@
  */
 window.BAYFRONT_LEAD_FORM = {
   timingEnabled: false,
-  analytics: { gaMeasurementId: "" },
+  analytics: { gaMeasurementId: "G-DZPYBJJFDT" },
   steps: [
     {
       id: "service",

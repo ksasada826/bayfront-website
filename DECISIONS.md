@@ -13,7 +13,7 @@
 - **Headline font:** Newsreader（「Beside you, beyond complexity.」）
 - **Kicker / UI sans:** Stack Sans Notch（ロゴ同一）
 - **Contact:** 問い合わせフォーム（メールアドレス直書きはしない）
-- **Contact（2026-11-21）:** 4項目フォームを廃止し、1画面1問のステップ式（支援の種類→現在の状況→メール）に。連絡先はメール（海外の B2B が相手のため電話にしない）。通知は Web3Forms のまま。計測は GA4（測定 ID 未設定）。フッターに Google 優先ソースへのリンク
+- **Contact（2026-11-21）:** 4項目フォームを廃止し、1画面1問のステップ式（支援の種類→現在の状況→メール）に。連絡先はメール（海外の B2B が相手のため電話にしない）。通知は Web3Forms のまま。計測は GA4（G-DZPYBJJFDT、2026-11-22 設定）。フッターに Google 優先ソースへのリンク
 - **和文コピーの型:** B 丁寧な会社案内に決定（2026-09-17 Keisuke）。A・C は不採用
 - **和文フォント（2026-09-17 Keisuke「ヒラギノで」ロック）:** `"Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "游ゴシック", Meiryo, sans-serif`
 - **会社概要（【決定 2026-09-20】代表を内包）:** `#company` に社名・事業一文・事実行（Founded／Founder／Address）。代表の経歴・LinkedInは Founder 行の中に展開（独立プロフィール見出しは置かない）。写真は右側。nav の About／代表紹介は廃止。**資本金・人数は出さない**。住所にマンション名なし・ENは Japan 付き。設立は 2025年11月。nav「サービス／Approach」は `#what`
