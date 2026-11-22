@@ -140,7 +140,7 @@ Settings → Pages にカスタムドメインが残っていれば外す（`git
 
 メールアドレスは HTML に書きません。送信は [Web3Forms](https://web3forms.com/) のままです。Access Key は `js/form-config.js` の `accessKey` です。空のときは送らず、画面に案内を出します。
 
-GA4 の測定 ID は `js/lead-form-config.js` の `analytics.gaMeasurementId`（G-DZPYBJJFDT。Google アナリティクスのアカウント「Bayfront Partners」、プロパティ「bayfront-partners.com」。2026-11-22 作成）。空にすると計測のスクリプトを読み込みません。データ共有の任意項目はすべてオフ。
+GA4 の測定 ID は `js/lead-form-config.js` の `analytics.gaMeasurementId`（G-DZPYBJJFDT。Google アナリティクスのアカウント「Bayfront Partners」、プロパティ「bayfront-partners.com」。2026-11-22 作成。画面は https://analytics.google.com/analytics/web/#/a417080078p565359687/reports/intelligenthome ）。空にすると計測のスクリプトを読み込みません。データ共有の任意項目はすべてオフ。
 
 ## TBD
 
